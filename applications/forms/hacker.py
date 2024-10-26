@@ -209,8 +209,9 @@ class HackerApplicationForm(_BaseApplicationForm):
             "other_diet": "Please fill here in your dietary requirements. We want to make sure we have food for you!",
             "lennyface": 'tip: you can chose from here <a href="http://textsmili.es/" target="_blank">'
             " http://textsmili.es/</a>",
-            "projects": "You can talk about about past hackathons, personal projects, awards etc. "
-            "(we love links) Show us your passion! :D",
+            "description": "Be original! Using AI to answer this question might penalize your application.",
+            "projects": 
+            "Tell us about your personal projects, awards, or any work that you are proud of.   <br>",
             "reimb_amount": "We try our best to cover costs for all hackers, but our budget is limited",
             "resume": "Accepted file formats: %s"
             % (", ".join(extensions) if extensions else "Any"),
@@ -249,7 +250,7 @@ class HackerApplicationForm(_BaseApplicationForm):
         widgets = {
             "origin": forms.TextInput(attrs={"autocomplete": "off"}),
             "description": forms.Textarea(attrs={"rows": 3, "cols": 40}),
-            "projects": forms.Textarea(attrs={"rows": 3, "cols": 40}),
+            "projects": forms.Textarea(attrs={"rows": 3, "cols": 40, 'id': 'projects'}),
             "discover": CustomSelect(choices=discover_choices),
             "graduation_year": forms.RadioSelect(),
         }
