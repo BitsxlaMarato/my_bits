@@ -30,7 +30,7 @@
 
 Needs: Python 3.X, virtualenv
 
-Stable at v. 3.10.X
+Stable at Python v. 3.10.X - Install at [this link](https://gist.github.com/rutcreate/c0041e842f858ceb455b748809763ddb).
 
 - `git clone https://github.com/hackupc/myhackupc && cd myhackupc`
 - `virtualenv env --python=python3.10`
@@ -40,9 +40,11 @@ Stable at v. 3.10.X
 - `python manage.py migrate`
 - `python manage.py createsuperuser` (creates super user to manage all the app)
 
-### Dummy data
+### Known errors
 
-_Coming soon_
+If you encounter an error like "Could not build wheels for django-crontab, et-xmlfile, oauthlib, odfpy, openpyxl, python-openid, tablib, unicodecsv, uuid", try upgrading setuptools:
+
+- `pip install -U setuptools`
 
 ## Available enviroment variables
 
