@@ -6,11 +6,11 @@ from django.utils import timezone
 
 HACKATHON_NAME = 'HackUPC'
 # What's the name for the application
-HACKATHON_APPLICATION_NAME = 'My HackUPC'
+HACKATHON_APPLICATION_NAME = 'My Bits'
 # Hackathon timezone
 TIME_ZONE = 'CET'
 # This description will be used on the html and sharing meta tags
-HACKATHON_DESCRIPTION = 'Join us for BarcelonaTech\'s hackathon. 36h. May 3 - 5.'
+HACKATHON_DESCRIPTION = 'Join us for BitsXLaMarato\'s hackathon. December 13 - 15.'
 # Domain where application is deployed, can be set by env variable
 HACKATHON_DOMAIN = os.environ.get('DOMAIN', None)
 HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME', None)
@@ -33,11 +33,11 @@ HACKATHON_FACEBOOK_PAGE = 'hackupc'
 # (OPTIONAL) Hackathon YouTube channel
 HACKATHON_YOUTUBE_PAGE = 'UCiiRorGg59Xd5Sjj9bjIt-g'
 # (OPTIONAL) Hackathon Instagram user
-HACKATHON_INSTAGRAM_ACCOUNT = 'hackupc'
+HACKATHON_INSTAGRAM_ACCOUNT = 'hackersupc'
 # (OPTIONAL) Hackathon Medium user
 HACKATHON_MEDIUM_ACCOUNT = 'hackupc'
 # (OPTIONAL) Github Repo for this project (so meta)
-HACKATHON_GITHUB_REPO = 'https://github.com/hackupc/myhackupc/'
+HACKATHON_GITHUB_REPO = 'https://github.com/BitsxlaMarato/mybits'
 
 # (OPTIONAL) Applications deadline
 HACKATHON_APP_DEADLINE = timezone.datetime(2024, 4, 24, 23, 59, tzinfo=timezone.pytz.timezone(TIME_ZONE))
@@ -52,7 +52,7 @@ HACKATHON_ARRIVE = ''
 HACKATHON_LEAVE = ''
 
 # (OPTIONAL) Hackathon live page
-HACKATHON_LIVE_PAGE = 'https://live.hackupc.com'
+HACKATHON_LIVE_PAGE = 'https://bitslive.hackersatupc.org/'
 
 # (OPTIONAL) Regex to automatically match organizers emails and set them as organizers when signing up
 REGEX_HACKATHON_ORGANIZER_EMAIL = '^.*@hackupc\.com$'
