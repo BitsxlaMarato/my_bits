@@ -96,3 +96,11 @@ YEARS = [(year, str(year)) for year in range(2018, 2031)]
 DEFAULT_YEAR = datetime.now().year + 1
 
 ENGLISH_LEVEL = [(i, str(i)) for i in range(1, 5 + 1)]
+
+TYPE_OF_HELPER_CHOICES = [
+    ('Mentor', 'Mentor'),
+    ('Voluntari', 'Voluntari'),
+    ('Sanitari', 'Sanitari'),
+    ('Treballador_FIB', 'Treballador FIB'),
+    ('Altre', 'Altre'),
+]
