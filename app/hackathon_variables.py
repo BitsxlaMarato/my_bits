@@ -4,7 +4,7 @@ import os
 
 from django.utils import timezone
 
-HACKATHON_NAME = 'HackUPC'
+HACKATHON_NAME = 'BitsXLaMarató'
 # What's the name for the application
 HACKATHON_APPLICATION_NAME = 'My Bits'
 # Hackathon timezone
@@ -133,5 +133,5 @@ SERVER_EMAIL = 'HackUPC Team <noreply@hackupc.com>'
 
 CODE_CONDUCT_LINK = 'https://legal.hackersatupc.org/hackupc/code_of_conduct'
 LEGAL_LINK = 'https://legal.hackersatupc.org/hackupc/legal_notice'
-PRIVACY_LINK = 'https://legal.hackersatupc.org/hackupc/privacy_and_cookies'
-TERMS_LINK = 'https://legal.hackersatupc.org/hackupc/terms_and_conditions'
+PRIVACY_LINK = 'https://legal.hackersatupc.org/bits/bits_privacy_and_cookies'
+TERMS_LINK = 'https://legal.hackersatupc.org/bits/bits_terms_and_conditions'
