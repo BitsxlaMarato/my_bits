@@ -61,7 +61,7 @@ REGEX_HACKATHON_ORGANIZER_EMAIL = '^.*@hackupc\.com$'
 HACKATHON_DEV_EMAILS = ['devs@hackupc.com', ]
 
 # Baggage configuration
-BAGGAGE_ENABLED = True
+BAGGAGE_ENABLED = False
 BAGGAGE_PICTURE = True
 
 # Reimbursement configuration
