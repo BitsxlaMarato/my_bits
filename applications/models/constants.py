@@ -101,6 +101,7 @@ TYPE_OF_HELPER_CHOICES = [
     ('Mentor', 'Mentor'),
     ('Voluntari', 'Voluntari'),
     ('Sanitari', 'Sanitari'),
+    ('Catering', 'Catering'),
     ('Treballador_FIB', 'Treballador FIB'),
     ('Altre', 'Altre'),
 ]
