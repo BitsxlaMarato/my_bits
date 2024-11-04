@@ -6,17 +6,20 @@ class HackerApplication(
     BaseApplication
 ):
     # Where is this person coming from?
-    origin = models.CharField(max_length=300)
+    origin = models.CharField(max_length=300, blank=True, null=True, default='')
 
     # Is this your first hackathon?
-    first_timer = models.BooleanField(default=False)
+    first_timer = models.BooleanField(default=False, blank=True, null=True)
+
+    # Are you a student from the FIB?
+    fibber = models.BooleanField(default=False, blank=True, null=True)
 
     # Random lenny face
-    lennyface = models.CharField(max_length=300, default='-.-')
+    lennyface = models.CharField(max_length=300, default=':)', blank=True, null=True)
 
     # University
     graduation_year = models.IntegerField(choices=YEARS, default=DEFAULT_YEAR)
-    university = models.CharField(max_length=300)
+    university = models.CharField(max_length=300, default='Universitat Politècnica de Catalunya - UPC')
     degree = models.CharField(max_length=300)
 
     # URLs
@@ -44,7 +47,7 @@ class HackerApplication(
                                        on_delete=models.SET_NULL)
 
     # Why do you want to come to X?
-    description = models.TextField(max_length=500)
+    description = models.TextField(max_length=500, blank=True, null=True, default='.')
 
     # Reimbursement
     reimb = models.BooleanField(default=False)
@@ -55,7 +58,7 @@ class HackerApplication(
     # Info for hardware
     hardware = models.CharField(max_length=300, null=True, blank=True)
 
-    cvs_edition = models.BooleanField(default=False)
+    cvs_edition = models.BooleanField(default=False, blank=True, null=True)
 
     resume = models.FileField(
         upload_to=resume_path_hackers,

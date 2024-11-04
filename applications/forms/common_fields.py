@@ -4,7 +4,7 @@ from django.conf import settings
 
 def common_first_timer():
     return forms.TypedChoiceField(
-        required=True,
+        required=False,
         label="Will %s be your first hackathon?" % settings.HACKATHON_NAME,
         coerce=lambda x: x == "True",
         choices=((False, "No"), (True, "Yes")),
@@ -15,10 +15,14 @@ def common_first_timer():
 def common_university():
     return forms.CharField(
         required=True,
-        label="What university do you study at?",
-        help_text="Current or most recent school you attended.",
+        label="A quina universitat estudies o has estudiat?",
+        help_text="Només el nom de la universitat",
         widget=forms.TextInput(
-            attrs={"class": "typeahead-schools", "autocomplete": "off"}
+            attrs={
+                "class": "typeahead-schools", 
+                "autocomplete": "off", 
+                "placeholder": "Universitat Politècnica de Catalunya - UPC"
+            },
         ),
     )
 
@@ -28,9 +32,6 @@ def common_degree():
         required=True,
         label="What's your major/degree?",
         help_text="Current or most recent degree you've received",
-        widget=forms.TextInput(
-            attrs={"class": "typeahead-degrees", "autocomplete": "off"}
-        ),
     )
 
 
@@ -57,7 +58,7 @@ def social_required(field_name, placeholder):
 
 def common_online():
     return forms.TypedChoiceField(
-        required=True,
+        required=False,
         label="How would you like to attend the event: live or online?",
         initial=False,
         coerce=lambda x: x == "True",
