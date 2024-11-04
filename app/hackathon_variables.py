@@ -65,7 +65,7 @@ BAGGAGE_ENABLED = True
 BAGGAGE_PICTURE = True
 
 # Reimbursement configuration
-REIMBURSEMENT_ENABLED = True
+REIMBURSEMENT_ENABLED = False
 DEFAULT_REIMBURSEMENT_AMOUNT = 100
 CURRENCY = '€'
 REIMBURSEMENT_EXPIRY_DATE = timezone.datetime(2024, 5, 1, 23, 59, tzinfo=timezone.pytz.timezone(TIME_ZONE))
