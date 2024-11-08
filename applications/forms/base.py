@@ -39,7 +39,7 @@ def get_exclude_fields():
 
 
 class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, ModelForm):
-    diet = forms.ChoiceField(label='Dietary requirements', choices=models.DIETS, required=True)
+    diet = forms.ChoiceField(label='Restriccions alimentàries', choices=models.DIETS, required=True)
     phone_number = forms.CharField(required=False, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': '+#########'}),
         label='Phone number (Optional)',
@@ -47,30 +47,30 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
     )
     under_age = forms.TypedChoiceField(
         required=True,
-        label='How old will you be at time of the event?',
+        label='Quina edat tindràs el cap de setmana de l\'esdeveniment?',
         initial=False,
         coerce=lambda x: x == 'True',
-        choices=((False, '18 or over'), (True, 'Between 14 (included) and 18')),
+        choices=((False, '18 o més'), (True, 'Entre 14 (inclòs) i 18')),
         widget=forms.RadioSelect
     )
 
     terms_and_conditions = forms.BooleanField(
         required=True,
-        label='I\'ve read, understand and accept <a href="/terms_and_conditions" target="_blank">%s '
-              'Terms & Conditions</a> and <a href="/privacy_and_cookies" target="_blank">%s '
-              'Privacy and Cookies Policy</a>.<span style="color: red; font-weight: bold;"> *</span>' % (
+        label='He llegit, entenc i accepto els <a href="/terms_and_conditions" target="_blank">'
+              'Termes i Condicions de %s</a> així com la <a href="/privacy_and_cookies" target="_blank">'
+              'Política de Privacitat i Cookies de %s</a>.<span style="color: red; font-weight: bold;"> *</span>' % (
                   settings.HACKATHON_NAME, settings.HACKATHON_NAME
               )
     )
 
     diet_notice = forms.BooleanField(
         required=False,
-        label='I authorize "Hackers at UPC" to use my food allergies and intolerances information to '
-              'manage the catering service only.<span style="color: red; font-weight: bold;"> *</span>'
+        label='Autoritzo a "Hackers at UPC" a utilitzar les meves restriccions alimentàries per gestionar '
+              'únicament els servies de càtering.<span style="color: red; font-weight: bold;"> *</span>'
     )
 
-    email_subscribe = forms.BooleanField(required=False, label='Subscribe to our Marketing list in order to inform '
-                                                               'you about our next events.')
+    email_subscribe = forms.BooleanField(required=False, label='Subscriu-te a la nostra llista de Marquèting per estar informat '
+                                                               'sobre les nostres activitats i esdeveniments.')
 
     def clean_terms_and_conditions(self):
         cc = self.cleaned_data.get('terms_and_conditions', False)
@@ -79,8 +79,8 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
         # https://stackoverflow.com/questions/9704067/test-if-django-modelform-has-instance
         if not cc and not self.instance.pk:
             raise forms.ValidationError(
-                "In order to apply and attend you have to accept our Terms & Conditions and"
-                " our Privacy and Cookies Policy."
+                "Per tal d'aplicar a l'esdeveniment, has d'acceptar els Termes i Condicions, i la "
+                "Política de Privacitat i Cookies."
             )
         return cc
 
@@ -92,8 +92,8 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
         # https://stackoverflow.com/questions/9704067/test-if-django-modelform-has-instance
         if diet != 'None' and not diet_notice and not self.instance.pk:
             raise forms.ValidationError(
-                "In order to apply and attend you have to accept us to use your personal data related to your food "
-                "allergies and intolerances only in order to manage the catering service."
+                "Per tal d'aplicar, has d'acceptar que fem ús de les teves dades respecte a les restriccions alimentàries "
+                "amb l'objectiu de gestionar els serveis de càtering."
             )
         return diet_notice
 
@@ -101,7 +101,7 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
         data = self.cleaned_data.get('other_diet', '')
         diet = self.cleaned_data.get('diet', 'None')
         if diet == 'Others' and not data:
-            raise forms.ValidationError("Please tell us your specific dietary requirements")
+            raise forms.ValidationError("Si us plau, especifica les teves restriccions alimentàries.")
         return data
 
     def clean_other_gender(self):
@@ -111,24 +111,6 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
             raise forms.ValidationError("Please enter this field or select 'Prefer not to answer'")
         return other_gender
 
-    def clean_origin(self):
-        origin = self.cleaned_data['origin']
-        # read from json file on local machine
-
-        # actual file path
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-
-        # get static relative path
-        STATIC_ROOT = os.path.join(dir_path, "../static")
-
-        # open relative file
-        with open(os.path.join(STATIC_ROOT,'cities.json')) as f:
-            countries = json.load(f)
-
-            # check if is part of the list
-            if origin not in countries:
-                raise forms.ValidationError("Please select one of the dropdown options and don't forget to add commas")
-            return origin
 
     def __getitem__(self, name):
         item = super(_BaseApplicationForm, self).__getitem__(name)
@@ -272,15 +254,11 @@ class ConfirmationInvitationForm(BootstrapFormMixin, forms.ModelForm):
 
     class Meta:
         model = models.HackerApplication
-        fields = ['diet', 'other_diet', 'reimb', 'reimb_amount', 'tshirt_size']
+        fields = ['diet', 'other_diet']
         help_texts = {
             'other_diet': 'If you have any special dietary requirements, please write write them here. '
-                          'We want to make sure we have food for you!',
-            'reimb_amount': 'We try our best to cover costs for all hackers, but our budget is limited',
+                          'We want to make sure we have food for you!'
         }
         labels = {
-            'tshirt_size': 'What\'s your t-shirt size?',
             'diet': 'Dietary requirements',
-            'reimb_amount': 'How much money (%s) would you need to afford traveling to %s?' % (
-                getattr(settings, 'CURRENCY', '$'), settings.HACKATHON_NAME),
         }
