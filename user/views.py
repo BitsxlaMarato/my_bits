@@ -188,6 +188,13 @@ def verify_email_required(request):
     if request.user.email_verified:
         messages.warning(request, "Your email has already been verified")
         return HttpResponseRedirect(reverse('root'))
+    if request.user.is_mentor:
+        # Mentors don't need to verify their email as long as its not @hackupc.com, which will not be verified
+        if not request.user.email.endswith('@hackupc.com'):
+            request.user.email_verified = True
+            request.user.save()
+            messages.success(request, "Email verified!")
+            return HttpResponseRedirect(reverse('root'))
     return TemplateResponse(request, 'verify_email_required.html', None)
 
 
