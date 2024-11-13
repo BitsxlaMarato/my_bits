@@ -124,12 +124,9 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
 class ConfirmationInvitationForm(BootstrapFormMixin, forms.ModelForm):
     bootstrap_field_info = {
         '': {
-            'fields': [{'name': 'tshirt_size', 'space': 4}, {'name': 'diet', 'space': 4},
+            'fields': [{'name': 'diet', 'space': 4},
                        {'name': 'other_diet', 'space': 4},
-                       {'name': 'reimb', 'space': 12}, {'name': 'reimb_amount', 'space': 12},
                        {'name': 'terms_and_conditions', 'space': 12},
-                       {'name': 'mlh_required_terms', 'space': 12},
-                       {'name': 'mlh_required_privacy', 'space': 12}, {'name': 'mlh_subscribe', 'space': 12},
                        {'name': 'diet_notice', 'space': 12}
                        ],
         },
