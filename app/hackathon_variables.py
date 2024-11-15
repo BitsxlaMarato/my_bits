@@ -21,7 +21,7 @@ elif not HACKATHON_DOMAIN:
 # Hackathon contact email: where should all hackers contact you. It will also be used as a sender for all emails
 HACKATHON_CONTACT_EMAIL = 'contact@hackupc.com'
 # Hackathon logo url, will be used on all emails
-HACKATHON_LOGO_URL = 'https://my.hackupc.com/static/logo.png'
+HACKATHON_LOGO_URL = 'https://apptoyoube.upcnet.es/media/news/2019/12/bitsxlamarato_bzVgUbV.jpg'
 
 HACKATHON_OG_IMAGE = 'https://hackupc.com/ogimage.png?v=2021'
 # (OPTIONAL) Track visits on your website
