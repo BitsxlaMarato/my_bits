@@ -108,7 +108,7 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
         gender = self.cleaned_data.get('gender')
         other_gender = self.cleaned_data.get('other_gender', None)
         if gender == "X" and not other_gender:
-            raise forms.ValidationError("Please enter this field or select 'Prefer not to answer'")
+            raise forms.ValidationError("Si us plau, introdueix una descripció o selecciona 'Prefereixo no contestar'")
         return other_gender
 
 
