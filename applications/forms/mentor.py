@@ -69,9 +69,9 @@ class MentorApplicationForm(_BaseApplicationForm):
         model = models.MentorApplication
 
         help_texts = {
-            "gender": "This is for demographic purposes.",
+            "gender": "Aquesta informació es per motius demogràfics. Pots deixar-la en blanc si ho prefereixes.",
             # 'degree': 'What\'s your major/degree?',
-            "other_diet": "Please fill here in your dietary requirements. We want to make sure we have food for you!",
+            "other_diet": "Si us plau, avisa'ns de les teves restriccions alimentàries! Volem fer el possible per tenir menjar per tu.",
         }
 
         labels = {
