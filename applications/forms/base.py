@@ -100,7 +100,7 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
     def clean_other_diet(self):
         data = self.cleaned_data.get('other_diet', '')
         diet = self.cleaned_data.get('diet', 'None')
-        if diet == 'Others' and not data:
+        if diet == 'Altres' and not data:
             raise forms.ValidationError("Si us plau, especifica les teves restriccions alimentàries.")
         return data
 
@@ -225,10 +225,11 @@ class ConfirmationInvitationForm(BootstrapFormMixin, forms.ModelForm):
                 "allergies and intolerances only in order to manage the catering service."
             )
         return diet_notice
+    
     def clean_other_diet(self):
         data = self.cleaned_data.get('other_diet', '')
         diet = self.cleaned_data.get('diet', 'None')
-        if diet == 'Others' and not data:
+        if diet == 'Altres' and not data:
             raise forms.ValidationError("Please tell us your specific dietary requirements")
         return data
 
