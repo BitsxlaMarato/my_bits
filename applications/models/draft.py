@@ -17,7 +17,7 @@ class DraftApplication(models.Model):
     @staticmethod
     def create_draft_application(instance):
         dict = model_to_dict(instance)
-        for key in ['user', 'invited_by', 'submission_date', 'status_update_date', 'status', 'resume']:
+        for key in ['user', 'invited_by', 'submission_date', 'status_update_date', 'status']:
             dict.pop(key, None)
         d = DraftApplication()
         d.user_id = instance.user_id

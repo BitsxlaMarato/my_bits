@@ -13,6 +13,8 @@ class HackerApplicationForm(_BaseApplicationForm):
                 {"name": "gender", "space": 12},
                 {"name": "other_gender", "space": 12},
                 {"name": "under_age", "space": 12},
+                {"name": "diet", "space": 12},
+                {"name": "other_diet", "space": 12},
             ],
             "description": "Ei! Ens encantaria saber una mica més sobre tu, ens ajudes?",
         },
@@ -74,19 +76,12 @@ class HackerApplicationForm(_BaseApplicationForm):
         polices_fields = [
             {"name": "email_subscribe", "space": 12},
             {"name": "terms_and_conditions", "space": 12},
+            {"name": "diet_notice", "space": 12}
         ]
 
         if not hybrid:
             self.fields["online"].widget = forms.HiddenInput()
         
-        if not discord:
-            personal_info_fields.extend(
-                [
-                    {"name": "diet", "space": 12},
-                    {"name": "other_diet", "space": 12},
-                ]
-            )
-            polices_fields.append({"name": "diet_notice", "space": 12})
 
         personal_info_fields.append({"name": "discover", "space": 12})
 
@@ -109,7 +104,6 @@ class HackerApplicationForm(_BaseApplicationForm):
 
     class Meta(_BaseApplicationForm.Meta):
         model = models.HackerApplication
-        extensions = getattr(settings, "SUPPORTED_RESUME_EXTENSIONS", None)
 
         help_texts = {
             "gender": "Aquesta informació es per motius demogràfics. Pots deixar-la en blanc si ho prefereixes.",
@@ -154,4 +148,5 @@ class HackerApplicationForm(_BaseApplicationForm):
             "graduation_year": "Quin any esperes graduar-te o t'has graduat?",
             "diet": "Restriccions alimentàries",
             "discover": "Com ens has conegut?",
+            "other_diet": "Si tens alguna restricció alimentària, si us plau, especifica-la",
         }

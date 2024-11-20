@@ -9,5 +9,19 @@ class MentorApplication(
     type_of_helper = models.CharField(max_length=100, null=True, blank=True, choices=TYPE_OF_HELPER_CHOICES)
     status = models.CharField(max_length=50, default=APP_CONFIRMED)  
     
+    resume = models.FileField(
+        upload_to=resume_path_hackers,
+        null=True,
+        blank=True,
+        validators=[validate_file_extension],
+    )
+    
     def can_be_edit(self, app_type="M"):
         return self.status in [APP_PENDING, APP_DUBIOUS] and not utils.is_app_closed(app_type)
+    
+    def invalidate(self):
+        if self.is_invalid():
+            self.valid = True
+        else:
+            self.valid = False
+        self.save()
