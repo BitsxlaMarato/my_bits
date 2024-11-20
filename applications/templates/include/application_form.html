@@ -17,15 +17,12 @@
     {% csrf_token %}
     {% include 'include/bootstrap_form.html' %}
     <div style="padding-left: 15px; padding-right: 15px">
-      {% if is_hacker %}
-      <p class="team-info"><i class="fa fa-exclamation-triangle"></i> <strong>Remember!</strong> Your team members still have to apply separately.</p>
-      {% endif %}
       <small><span style="color: red">*</span>Indicates required field.</small>
     </div>
 
     {% if not application or application.can_be_edit %}
         <button class="btn btn-success btn-block" type="submit" {% if application and not application.can_be_edit %} disabled {% endif %}>{% if application %}Update application{% else %}
-            Submit application{% endif %}</button>
+            Enviar la sol·licitud!{% endif %}</button>
 
     {% endif %}
 </form>
@@ -39,7 +36,6 @@
 
     $(document).ready(function () {
         make_field_typeahead('university', '{% static 'schools.json' %}');
-        make_field_typeahead('degree', '{% static 'degrees.json' %}');
 
         fetch('{% static 'cities.json' %}')
         .then((response) => response.json())
@@ -90,7 +86,7 @@
                 return face_to_face.length > 0;
             }, 1);
             conditional_field(other_diet, diet, function () {
-                return diet.val() === 'Others';
+                return diet.val() === 'Altres';
             }, 1);
             var diet_notice = $('#id_diet_notice');
             conditional_field(diet_notice, diet, function () {

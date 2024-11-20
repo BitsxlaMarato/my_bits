@@ -37,28 +37,28 @@ NON_BINARY = 'NB'
 GENDER_OTHER = 'X'
 
 GENDERS = [
-    (NO_ANSWER, 'Prefer not to answer'),
-    (MALE, 'Male'),
-    (FEMALE, 'Female'),
-    (NON_BINARY, 'Non-binary'),
-    (GENDER_OTHER, 'Prefer to self-describe'),
+    (NO_ANSWER, 'Prefereixo no contestar'),
+    (MALE, 'Home'),
+    (FEMALE, 'Dona'),
+    (NON_BINARY, 'No-binari'),
+    (GENDER_OTHER, 'Prefereixo descriure\'m'),
 ]
 
 
-D_NONE = 'None'
-D_VEGETARIAN = 'Vegetarian'
-D_VEGAN = 'Vegan'
+D_NONE = 'Cap restricció'
+D_VEGETARIAN = 'Vegetarià'
+D_VEGAN = 'Vegà'
 #D_NO_PORK = 'No pork'
-D_GLUTEN_FREE = 'Gluten-free'
-D_OTHER = 'Others'
+D_GLUTEN_FREE = 'Sense gluten'
+D_OTHER = 'Altres'
 
 DIETS = [
-    (D_NONE, 'No requirements'),
-    (D_VEGETARIAN, 'Vegetarian'),
-    (D_VEGAN, 'Vegan'),
+    (D_NONE, 'Cap restricció'),
+    (D_VEGETARIAN, 'Vegetarià'),
+    (D_VEGAN, 'Vegà'),
     #(D_NO_PORK, 'No pork'),
-    (D_GLUTEN_FREE, 'Gluten-free'),
-    (D_OTHER, 'Others')
+    (D_GLUTEN_FREE, 'Sense gluten'),
+    (D_OTHER, 'Altres')
 ]
 
 T_XXS = 'XXS'
@@ -92,7 +92,16 @@ HACK_NAME = getattr(hackathon_variables, 'HACKATHON_NAME', "HackAssistant")
 EXTRA_NAME = [' 2016 Fall', ' 2016 Winter', ' 2017 Fall', ' 2017 Winter', ' 2018', ' 2019', ' 2021', ' 2022', ' 2023']
 PREVIOUS_HACKS = [(i, HACK_NAME + EXTRA_NAME[i]) for i in range(0, len(EXTRA_NAME))]
 
-YEARS = [(int(size), size) for size in ('2023 2024 2025 2026 2027 2028 2029 2030'.split(' '))]
+YEARS = [(year, str(year)) for year in range(2018, 2031)]
 DEFAULT_YEAR = datetime.now().year + 1
 
 ENGLISH_LEVEL = [(i, str(i)) for i in range(1, 5 + 1)]
+
+TYPE_OF_HELPER_CHOICES = [
+    ('Mentor', 'Mentor'),
+    ('Voluntari', 'Voluntari'),
+    ('Sanitari', 'Sanitari'),
+    ('Catering', 'Catering'),
+    ('Treballador_FIB', 'Treballador FIB'),
+    ('Altre', 'Altre'),
+]
